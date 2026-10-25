@@ -1,0 +1,101 @@
+id,text,label,category,pred_small_nb,pred_small_lr,prob_small_lr,pred_gemini_naive,pred_gemini_struct,pred_gemini_few,small_lr_error,gemini_few_error
+1,"An enchanting, unforgettable tour de force from opening frame to final credits.",1,Direct Positive,1,1,0.5782,1,1,1,False,False
+2,"The writing is sharp, witty, and profoundly humane in its observations.",1,Direct Positive,1,0,0.472,1,1,1,True,False
+3,A masterclass in modern thriller pacing with electrifying lead acting.,1,Direct Positive,0,0,0.4339,1,1,1,True,False
+4,Breathtaking visual design and an emotionally resonant core make this special.,1,Direct Positive,1,1,0.5601,1,1,1,False,False
+5,A rare gem that balances gut-busting laughter with poignant sincerity.,1,Direct Positive,1,1,0.578,1,1,1,False,False
+6,"Every performance feels deeply authentic, grounded, and emotionally rich.",1,Direct Positive,1,1,0.5307,1,1,1,False,False
+7,Brilliantly subverts genre expectations while delivering top-tier suspense.,1,Direct Positive,1,1,0.5342,1,1,1,False,False
+8,An extraordinary cinematic achievement that will stand the test of time.,1,Direct Positive,0,0,0.424,1,1,1,True,False
+9,Delightfully charismatic leads turn a simple premise into pure gold.,1,Direct Positive,0,0,0.4615,1,1,1,True,False
+10,"A triumph of soulful direction, sumptuous music, and gripping pacing.",1,Direct Positive,0,1,0.5213,1,1,1,False,False
+11,"Smart, sophisticated, and packed with irresistible emotional depth.",1,Direct Positive,1,1,0.6454,1,1,1,False,False
+12,"Leaves you inspired, invigorated, and desperate to rewatch immediately.",1,Direct Positive,0,0,0.4255,1,1,1,True,False
+13,A work of genuine artistic courage and visionary technical brilliance.,1,Direct Positive,1,1,0.587,1,1,1,False,False
+14,Sensational sound design and camera movements that leave you in awe.,1,Direct Positive,0,0,0.42,1,1,1,True,False
+15,A deeply rewarding experience that treats its audience with immense respect.,1,Direct Positive,1,1,0.536,1,1,1,False,False
+16,One of the most thrilling and original animated features in decades.,1,Direct Positive,1,1,0.6542,1,1,1,False,False
+17,Utterly captivating; you will not look away for a single second.,1,Direct Positive,1,1,0.5922,1,1,1,False,False
+18,Magnificent score and flawless ensemble chemistry carry the entire journey.,1,Direct Positive,1,1,0.6523,1,1,1,False,False
+19,"Tender, intelligent, and beautifully observed human drama.",1,Direct Positive,1,1,0.5484,1,1,1,False,False
+20,A resounding success that hits every emotional and dramatic note perfectly.,1,Direct Positive,1,1,0.5849,1,1,1,False,False
+21,An agonizingly boring slog that feels three times longer than its runtime.,0,Direct Negative,1,1,0.5461,0,0,0,True,False
+22,"Replete with embarrassing dialogue, cheap sets, and dismal acting.",0,Direct Negative,0,0,0.4473,0,0,0,False,False
+23,A staggering failure of storytelling with zero compelling characters.,0,Direct Negative,1,0,0.4432,0,0,0,False,False
+24,Painfully derivative plot that copies better films without any understanding.,0,Direct Negative,0,0,0.4709,0,0,0,False,False
+25,"Lacks humor, lacks pacing, and lacks any discernible artistic vision.",0,Direct Negative,0,0,0.413,0,0,0,False,False
+26,"A cynical, exhausting cash grab that completely wastes a talented ensemble.",0,Direct Negative,0,0,0.3159,0,0,0,False,False
+27,"Dull, muddled, and so utterly lifeless that staying awake is an ordeal.",0,Direct Negative,0,0,0.4397,0,0,0,False,False
+28,Insultingly stupid plot twists that unravel whatever dignity the story had.,0,Direct Negative,0,0,0.3244,0,0,0,False,False
+29,Cacophonous noise and incoherent editing disguised as an action spectacle.,0,Direct Negative,1,1,0.5333,0,0,0,True,False
+30,An unwatchable trainwreck of terrible accents and clumsy direction.,0,Direct Negative,0,0,0.4113,0,0,0,False,False
+31,Utterly pointless sequel that actively ruins the charm of the original.,0,Direct Negative,0,1,0.5011,0,0,0,True,False
+32,"A dreary, pompous disaster that collapses under its own self-importance.",0,Direct Negative,0,0,0.4554,0,0,0,False,False
+33,Horrendous screenplay filled with wooden one-liners and gaping plot holes.,0,Direct Negative,1,1,0.5027,0,0,0,True,False
+34,Completely botched emotional beats leave the viewer totally indifferent.,0,Direct Negative,0,0,0.3931,0,0,0,False,False
+35,An assault on good taste and basic narrative continuity.,0,Direct Negative,1,1,0.5325,0,0,0,True,False
+36,Shoddy CGI and uninterested lead actors make this a painful watch.,0,Direct Negative,1,0,0.479,0,0,0,False,False
+37,"A hollow, soul-crushing exercise in cinematic mediocrity.",0,Direct Negative,0,0,0.3784,0,0,0,False,False
+38,Total waste of two hours and ten dollars; avoid like the plague.,0,Direct Negative,0,0,0.2655,0,0,0,False,False
+39,"Fails on literally every level: script, directing, score, and performance.",0,Direct Negative,1,0,0.4942,0,0,0,False,False
+40,Desperately unfunny and aggressively obnoxious from the first minute.,0,Direct Negative,0,0,0.323,0,0,0,False,False
+41,"Not bad at all; in fact, I was pleasantly surprised by the depth.",1,Negation & Modifiers,1,1,0.6292,1,1,1,False,False
+42,"Hardly a masterpiece, but never boring and undeniably fun.",1,Negation & Modifiers,1,1,0.574,1,1,1,False,False
+43,I can not deny the film's infectious enthusiasm and genuine charm.,1,Negation & Modifiers,0,0,0.4221,0,1,1,True,False
+44,There wasn't a single frame where the lead actress wasn't mesmerizing.,1,Negation & Modifiers,1,1,0.5923,0,1,1,False,False
+45,"By no means perfect, yet it accomplishes exactly what it set out to do.",1,Negation & Modifiers,0,1,0.5076,1,1,1,False,False
+46,Not once did this thrilling mystery lose my undivided attention.,1,Negation & Modifiers,1,1,0.5936,1,1,1,False,False
+47,"It is not without charm, and the ending delivers real warmth.",1,Negation & Modifiers,1,1,0.7021,1,1,1,False,False
+48,"Not particularly good, and definitely not worth the ticket price.",0,Negation & Modifiers,0,0,0.2718,0,0,0,False,False
+49,I can not recommend this tedious mess to anyone with good taste.,0,Negation & Modifiers,0,0,0.4242,0,0,0,False,False
+50,Never quite succeeds in making us care about a single character.,0,Negation & Modifiers,1,1,0.5274,0,0,0,True,False
+51,"Not a single joke landed, leaving the theater in painful silence.",0,Negation & Modifiers,0,0,0.4229,0,0,0,False,False
+52,Nowhere near the standard set by the director's earlier classics.,0,Negation & Modifiers,0,0,0.3863,0,0,0,False,False
+53,Hardly an ounce of original thought went into this bland script.,0,Negation & Modifiers,0,0,0.4419,0,0,0,False,False
+54,Not even the legendary cinematography could prevent this from sinking.,0,Negation & Modifiers,0,0,0.3229,0,0,0,False,False
+55,"It doesn't work as drama, nor does it work as a comedy.",0,Negation & Modifiers,0,1,0.5349,0,0,0,True,False
+56,What a stunning achievement in testing how long an audience can endure boredom.,0,Sarcasm & Irony,0,0,0.4266,1,0,0,False,False
+57,Truly groundbreaking work if the goal was to cure chronic insomnia.,0,Sarcasm & Irony,0,0,0.3949,0,0,0,False,False
+58,I loved the part where the plot completely vanished into thin air.,0,Sarcasm & Irony,0,0,0.3832,0,0,0,False,False
+59,Brilliant idea to hire writers who clearly despise human communication.,0,Sarcasm & Irony,1,1,0.5008,0,0,0,True,False
+60,Give the editor an Oscar for managing to stitch together random nonsense.,0,Sarcasm & Irony,0,0,0.4515,0,0,0,False,False
+61,Another cinematic triumph from the studio that brought you last year's trash.,0,Sarcasm & Irony,1,1,0.5164,1,1,1,True,True
+62,I was on the edge of my seat... desperately looking for the exit sign.,0,Sarcasm & Irony,1,1,0.632,0,0,0,True,False
+63,"Clearly, what the world needed was two hours of loud explosions and zero IQ.",0,Sarcasm & Irony,0,0,0.2751,0,0,0,False,False
+64,A breathtaking demonstration of how to burn a hundred million dollars.,0,Sarcasm & Irony,1,0,0.428,1,0,0,False,False
+65,"If you enjoy watching paint dry with added CGI lens flares, this is your film.",0,Sarcasm & Irony,1,1,0.5025,0,0,0,True,False
+66,"Oh sure, blame the movie for being so captivating that I forgot to breathe.",1,Sarcasm & Irony,1,1,0.5462,1,1,1,False,False
+67,Terrible movie to watch if you hate having your mind completely blown.,1,Sarcasm & Irony,1,0,0.4988,1,1,1,True,False
+68,My only complaint is that reality felt dull and monochrome after leaving the theater.,1,Sarcasm & Irony,0,0,0.4029,1,1,1,True,False
+69,Worst part was having to wait three years for a masterpiece like this.,1,Sarcasm & Irony,1,1,0.544,1,1,1,False,False
+70,I hated how violently this film grabbed my emotions and refused to let go.,1,Sarcasm & Irony,1,1,0.5211,0,0,0,False,True
+71,"The pacing stumbles in the middle, but the breathtaking finale redeems everything.",1,Mixed / Contrastive,1,1,0.541,1,1,1,False,False
+72,"While the script has minor cliches, the stellar performances make it worthwhile.",1,Mixed / Contrastive,1,1,0.5951,1,1,1,False,False
+73,"It takes an hour to get going, but once it does, it's an exhilarating ride.",1,Mixed / Contrastive,1,1,0.7704,1,1,1,False,False
+74,"Despite occasional cheesy lines, the film's heart is completely in the right place.",1,Mixed / Contrastive,1,0,0.4649,1,1,1,True,False
+75,"A bit overly sentimental towards the end, yet undeniably effective and moving.",1,Mixed / Contrastive,1,1,0.6178,1,1,1,False,False
+76,"Though flawed in its structure, the visual ambition alone justifies the price.",1,Mixed / Contrastive,0,0,0.4355,1,1,0,True,True
+77,"The jokes are hit and miss, but the charming chemistry carries the day.",1,Mixed / Contrastive,0,0,0.4913,1,1,1,True,False
+78,"The cinematography is gorgeous, but the hollow story ruins any emotional impact.",0,Mixed / Contrastive,0,0,0.3628,0,0,0,False,False
+79,"Boasts a phenomenal soundtrack, yet the dreadful pacing drags the film to a halt.",0,Mixed / Contrastive,0,0,0.4348,0,0,0,False,False
+80,"The actors try their very best, but the atrocious script gives them nothing to work with.",0,Mixed / Contrastive,0,0,0.3902,0,0,0,False,False
+81,"Starts with an intriguing premise, only to collapse into a ridiculous mess.",0,Mixed / Contrastive,0,0,0.3326,0,0,0,False,False
+82,"A visually lavish production that ultimately feels empty, soulless, and sterile.",0,Mixed / Contrastive,0,0,0.3411,0,0,0,False,False
+83,"Great action sequences, but completely unwatchable whenever people start talking.",0,Mixed / Contrastive,0,0,0.4801,1,1,0,False,False
+84,"Promising opening twenty minutes, followed by an agonizingly tedious downward spiral.",0,Mixed / Contrastive,0,0,0.3728,1,0,0,False,False
+85,Spectacular CGI cannot mask the fact that the writing is thoroughly incompetent.,0,Mixed / Contrastive,1,0,0.4997,0,0,0,False,False
+86,This movie absolutely slaps; the final sequence had me ascending.,1,Slang & Ambiguity,1,1,0.5102,1,1,1,False,False
+87,Totally lived up to the hype—pure cinema at its peak.,1,Slang & Ambiguity,1,1,0.5765,1,1,1,False,False
+88,The director cooked with this one; 10/10 no notes.,1,Slang & Ambiguity,1,1,0.5508,1,1,1,False,False
+89,It hits all the right notes without breaking a sweat.,1,Slang & Ambiguity,1,1,0.6716,1,1,1,False,False
+90,A certified banger that delivers on every front.,1,Slang & Ambiguity,1,1,0.5618,1,1,1,False,False
+91,Straight gas from start to finish.,1,Slang & Ambiguity,0,0,0.4911,1,1,1,True,False
+92,Knocked it out of the park; definitely an instant rewatch.,1,Slang & Ambiguity,1,1,0.692,1,1,1,False,False
+93,Honestly pretty mid; felt like a cheap knockoff.,0,Slang & Ambiguity,1,1,0.7514,1,1,0,True,False
+94,A total flop that completely missed the mark.,0,Slang & Ambiguity,0,0,0.3255,0,0,0,False,False
+95,The hype fell completely flat—do not waste your time.,0,Slang & Ambiguity,0,0,0.2853,0,0,0,False,False
+96,Fumbled the bag in the final act after a decent start.,0,Slang & Ambiguity,0,1,0.506,1,0,0,True,False
+97,Talk about a snoozefest; completely put me to sleep.,0,Slang & Ambiguity,0,0,0.3893,0,0,0,False,False
+98,Hard pass. Not feeling the vibe at all.,0,Slang & Ambiguity,0,1,0.5387,0,0,0,True,False
+99,It jumped the shark ten minutes in and never recovered.,0,Slang & Ambiguity,0,1,0.5195,0,0,0,True,False
+100,"Dead on arrival; zero chemistry, zero pulse.",0,Slang & Ambiguity,0,0,0.4641,0,0,0,False,False

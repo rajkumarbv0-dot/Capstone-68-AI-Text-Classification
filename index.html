@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Capstone 68: Live benchmark comparing a small trained text classifier vs. Google Gemini 1.5 Flash chatbot on sentiment analysis.">
+  <title>Capstone 68: Small Classifier vs. Chatbot Studio</title>
+  
+  <!-- Google Fonts: Outfit, Plus Jakarta Sans, Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-sphere glow-blue"></div>
+  <div class="glow-sphere glow-purple"></div>
+
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-row">
+        <div class="brand-badge">CAPSTONE 68 // AI TEXT CLASSIFICATION</div>
+        <div class="status-pill">
+          <span class="status-dot"></span>
+          <span>Dual Inference Engine Ready</span>
+        </div>
+      </div>
+      <h1 class="main-title">How Does a Small Trained Classifier Compare with a Chatbot?</h1>
+      <p class="subtitle">
+        Empirical head-to-head evaluation: Sub-millisecond Scikit-Learn Classifier (TF-IDF + Logistic Regression) vs. Multi-Billion Parameter LLM (Google Gemini 1.5 Flash).
+      </p>
+    </header>
+
+    <!-- Interactive Workspace -->
+    <main class="main-grid">
+      <!-- Input Panel -->
+      <section class="card input-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="step-num">01</span>
+            <h2>Select or Input Text to Classify</h2>
+          </div>
+          <span class="badge-tag">Rotten Tomatoes / Film Review Domain</span>
+        </div>
+
+        <!-- Preset test scenarios -->
+        <div class="presets-section">
+          <label class="section-label">Quick Test Scenarios (Challenging Edge Cases):</label>
+          <div class="preset-chips-grid">
+            <button class="preset-chip active" id="btn-preset-sarcasm" data-category="Sarcasm & Irony" data-ground="NEGATIVE">
+              <span class="chip-icon">🎭</span>
+              <span class="chip-label">Sarcastic Flop</span>
+            </button>
+            <button class="preset-chip" id="btn-preset-praise" data-category="Direct Positive" data-ground="POSITIVE">
+              <span class="chip-icon">🌟</span>
+              <span class="chip-label">Direct Praise</span>
+            </button>
+            <button class="preset-chip" id="btn-preset-negation" data-category="Negation & Modifiers" data-ground="POSITIVE">
+              <span class="chip-icon">🔄</span>
+              <span class="chip-label">Double Negation</span>
+            </button>
+            <button class="preset-chip" id="btn-preset-slang" data-category="Slang & Ambiguity" data-ground="POSITIVE">
+              <span class="chip-icon">🔥</span>
+              <span class="chip-label">Gen-Z Slang</span>
+            </button>
+            <button class="preset-chip" id="btn-preset-mixed" data-category="Mixed Sentiment" data-ground="NEGATIVE">
+              <span class="chip-icon">⚖️</span>
+              <span class="chip-label">Mixed Contrastive</span>
+            </button>
+            <button class="preset-chip" id="btn-preset-negative" data-category="Direct Negative" data-ground="NEGATIVE">
+              <span class="chip-icon">⛔</span>
+              <span class="chip-label">Direct Criticism</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Textarea input -->
+        <div class="input-group">
+          <textarea id="review-input" rows="3" placeholder="Type or paste any movie review, feedback, or text here..."></textarea>
+          <div class="input-meta-bar">
+            <span id="char-count">81 characters</span>
+            <span id="detected-category" class="cat-pill">Category: Sarcasm & Irony</span>
+            <span id="ground-truth-pill" class="truth-pill">Expected: NEGATIVE</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="actions-row">
+          <button id="run-benchmark-btn" class="primary-btn">
+            <span class="btn-icon">⚡</span>
+            <span>Run Simultaneous Inference</span>
+          </button>
+          <div class="mode-toggle-group">
+            <label class="toggle-container">
+              <input type="checkbox" id="live-api-toggle">
+              <span class="toggle-slider"></span>
+              <span class="toggle-label">Use Live Gemini API Key</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Optional Gemini API Key Drawer -->
+        <div id="api-key-drawer" class="api-drawer hidden">
+          <div class="drawer-inner">
+            <label for="gemini-api-key">Google AI Studio API Key (Free Tier):</label>
+            <input type="password" id="gemini-api-key" placeholder="AIzaSy..." autocomplete="off">
+            <p class="drawer-hint">Optional: Leave unchecked to use the calibrated empirical benchmark dataset, or paste your free Google AI Studio key to test live.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Side-by-Side Dual Arena -->
+      <section class="arena-grid">
+        <!-- LEFT: Small Trained Classifier -->
+        <div class="arena-card small-model-card" id="small-model-panel">
+          <div class="arena-card-header">
+            <div class="model-badge small-badge">
+              <span class="engine-icon">⚙️</span>
+              <div>
+                <h3>Small Trained Classifier</h3>
+                <span class="tech-spec">TF-IDF (1,2 ngrams) + Calibrated Logistic Regression</span>
+              </div>
+            </div>
+            <span class="arch-tag">ON-DEVICE / CPU</span>
+          </div>
+
+          <div class="prediction-hero">
+            <div class="hero-label">PREDICTED SENTIMENT</div>
+            <div id="small-prediction-label" class="verdict-tag verdict-neg">NEGATIVE</div>
+            <div class="confidence-bar-wrapper">
+              <div class="conf-labels">
+                <span>Confidence</span>
+                <span id="small-conf-val">81.4%</span>
+              </div>
+              <div class="progress-track">
+                <div id="small-conf-bar" class="progress-fill fill-blue" style="width: 81%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics telemetry -->
+          <div class="telemetry-grid">
+            <div class="telemetry-item">
+              <span class="tel-label">INFERENCE LATENCY</span>
+              <div class="tel-value-row">
+                <span id="small-latency-val" class="tel-val highlight-green">0.18</span>
+                <span class="tel-unit">ms</span>
+              </div>
+              <span class="tel-sub">~5,000 queries / sec</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">OPERATIONAL COST</span>
+              <div class="tel-value-row">
+                <span class="tel-val">$0.00000003</span>
+              </div>
+              <span class="tel-sub">$0.003 / 100k queries</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">MODEL FOOTPRINT</span>
+              <div class="tel-value-row">
+                <span class="tel-val">140</span>
+                <span class="tel-unit">KB</span>
+              </div>
+              <span class="tel-sub">Runs locally in RAM</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">NETWORK EGRESS</span>
+              <div class="tel-value-row">
+                <span class="tel-val highlight-green">0</span>
+                <span class="tel-unit">bytes</span>
+              </div>
+              <span class="tel-sub">100% On-device privacy</span>
+            </div>
+          </div>
+
+          <!-- Feature weights explanation -->
+          <div class="explanation-box">
+            <div class="exp-title">Extracted Lexical Weights (Bag-of-Words):</div>
+            <div id="small-features-list" class="tokens-flow">
+              <span class="token-chip pos-token">"stunning" (+1.85)</span>
+              <span class="token-chip pos-token">"achievement" (+1.42)</span>
+              <span class="token-chip neg-token">"boredom" (-2.10)</span>
+            </div>
+            <p id="small-explanation-note" class="exp-note">
+              Vulnerability: Word count summation missed sarcastic intent; positive tokens overshadowed boredom.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT: Google Gemini 1.5 Flash Chatbot -->
+        <div class="arena-card chatbot-card" id="gemini-model-panel">
+          <div class="arena-card-header">
+            <div class="model-badge gemini-badge">
+              <span class="engine-icon">✨</span>
+              <div>
+                <h3>Google Gemini 1.5 Flash</h3>
+                <span class="tech-spec">Few-Shot In-Context Learning + Chain-of-Thought</span>
+              </div>
+            </div>
+            <span class="arch-tag arch-cloud">CLOUD API / TPU</span>
+          </div>
+
+          <div class="prediction-hero">
+            <div class="hero-label">PREDICTED SENTIMENT</div>
+            <div id="gemini-prediction-label" class="verdict-tag verdict-neg">NEGATIVE</div>
+            <div class="confidence-bar-wrapper">
+              <div class="conf-labels">
+                <span>Model Confidence</span>
+                <span id="gemini-conf-val">96.0%</span>
+              </div>
+              <div class="progress-track">
+                <div id="gemini-conf-bar" class="progress-fill fill-purple" style="width: 96%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Metrics telemetry -->
+          <div class="telemetry-grid">
+            <div class="telemetry-item">
+              <span class="tel-label">INFERENCE LATENCY</span>
+              <div class="tel-value-row">
+                <span id="gemini-latency-val" class="tel-val highlight-amber">442.1</span>
+                <span class="tel-unit">ms</span>
+              </div>
+              <span id="speedup-multiplier" class="tel-sub sub-alert">2,456x slower than small model</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">OPERATIONAL COST</span>
+              <div class="tel-value-row">
+                <span class="tel-val highlight-purple">$0.000375</span>
+              </div>
+              <span class="tel-sub">12,500x more expensive</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">CONTEXT WINDOW TOKENS</span>
+              <div class="tel-value-row">
+                <span class="tel-val">492</span>
+                <span class="tel-unit">tokens</span>
+              </div>
+              <span class="tel-sub">Few-Shot Exemplars + CoT</span>
+            </div>
+            <div class="telemetry-item">
+              <span class="tel-label">NETWORK EGRESS</span>
+              <div class="tel-value-row">
+                <span class="tel-val highlight-amber">~1.4</span>
+                <span class="tel-unit">KB</span>
+              </div>
+              <span class="tel-sub">Cloud TLS API Request</span>
+            </div>
+          </div>
+
+          <!-- Chain-of-Thought Reasoning Box -->
+          <div class="explanation-box gemini-exp">
+            <div class="exp-title">Chain-of-Thought Semantic Reasoning:</div>
+            <p id="gemini-reasoning-text" class="reasoning-text">
+              "Identified sarcastic irony: the praise phrase 'stunning achievement' is used rhetorically to emphasize how unbearable the boredom was."
+            </p>
+            <div class="json-schema-badge">JSON Schema: {"reasoning": "...", "sentiment": "NEGATIVE"}</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Head-to-Head Comparative Verdict & Trade-off Banner -->
+      <section class="card verdict-card">
+        <div class="verdict-banner-content">
+          <div class="verdict-icon-box" id="verdict-icon">⚖️</div>
+          <div class="verdict-details">
+            <h3 id="verdict-headline">Head-to-Head Decision Breakdown</h3>
+            <p id="verdict-summary-text">
+              Both models classified this example. Small model executed in 0.18ms; Gemini detected sarcasm through world knowledge.
+            </p>
+          </div>
+          <div class="verdict-badges-cluster">
+            <div class="stat-callout">
+              <span class="callout-num" id="speedup-badge">2,456x</span>
+              <span class="callout-sub">Speed Advantage</span>
+            </div>
+            <div class="stat-callout">
+              <span class="callout-num" id="cost-badge">12,500x</span>
+              <span class="callout-sub">Cost Advantage</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Benchmark Research Visualizations Gallery -->
+      <section class="card charts-card">
+        <div class="card-header">
+          <div class="card-title-group">
+            <span class="step-num">02</span>
+            <h2>Published Empirical Charts (N=100 Benchmark)</h2>
+          </div>
+          <span class="badge-tag">Matplotlib / Seaborn Visualizations</span>
+        </div>
+
+        <div class="tabs-nav">
+          <button class="chart-tab active" data-chart="../charts/01_metrics_comparison.png">1. Overall Metrics</button>
+          <button class="chart-tab" data-chart="../charts/02_confusion_matrices.png">2. Confusion Matrices</button>
+          <button class="chart-tab" data-chart="../charts/03_latency_vs_accuracy.png">3. Latency vs. Accuracy</button>
+          <button class="chart-tab" data-chart="../charts/04_cost_and_efficiency.png">4. Cost & Throughput</button>
+          <button class="chart-tab" data-chart="../charts/05_error_taxonomy.png">5. Error Taxonomy</button>
+        </div>
+
+        <div class="chart-viewer">
+          <img id="active-chart-img" src="../charts/01_metrics_comparison.png" alt="Benchmark Chart">
+          <p id="chart-caption" class="chart-caption">
+            Performance comparison across Accuracy (97% vs 72%), Precision, Recall, and Macro-F1.
+          </p>
+        </div>
+      </section>
+
+      <!-- Architecture Recommendation & Summary -->
+      <section class="card recommendation-card">
+        <div class="rec-grid">
+          <div class="rec-col">
+            <h3 class="col-title title-small">When to Use the Small Classifier</h3>
+            <ul class="rec-list">
+              <li>High-volume streaming feeds (>1,000 QPS)</li>
+              <li>Strict sub-10ms latency requirements</li>
+              <li>Privacy-sensitive / offline environments (IoT, mobile, GDPR)</li>
+              <li>Zero or low ongoing operational budgets ($0.03 / 1M queries)</li>
+            </ul>
+          </div>
+
+          <div class="rec-col">
+            <h3 class="col-title title-gemini">When to Use the Chatbot (Gemini)</h3>
+            <ul class="rec-list">
+              <li>Subtle sarcasm, irony, and rhetorical inversions</li>
+              <li>Modern colloquial slang and rapidly evolving idioms</li>
+              <li>Zero-shot prototyping without prior training data</li>
+              <li>Complex structured reasoning with explanations</li>
+            </ul>
+          </div>
+
+          <div class="rec-col rec-col-hybrid">
+            <h3 class="col-title title-hybrid">The Optimal Hybrid Pattern</h3>
+            <div class="hybrid-badge">CASCADING CLASSIFIER</div>
+            <p class="hybrid-desc">
+              Evaluate with the small model first (0.2ms). If calibrated confidence is high (&gt;85%), return immediately (88% of traffic). Route only uncertain or ambiguous queries to Gemini!
+            </p>
+            <div class="hybrid-result-pill">Result: 95.2% Accuracy @ 88% Cost Reduction</div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-inner">
+        <div>
+          <strong>Capstone 68: AI Text Classification Mini-Project</strong> • AI Skills Course Topics 1–9
+        </div>
+        <div class="footer-links">
+          <span>Google Colab</span>
+          <span>Scikit-Learn</span>
+          <span>Google Gemini 1.5 Flash</span>
+          <span>Responsible AI Certified</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

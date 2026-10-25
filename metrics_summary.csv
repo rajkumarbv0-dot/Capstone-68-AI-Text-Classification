@@ -1,0 +1,6 @@
+model_name,accuracy,precision_macro,recall_macro,f1_macro,mean_latency_ms,p95_latency_ms,throughput_qps,training_time_ms,model_size_kb,cost_per_100k_usd,confusion_matrix
+Small: Naive Bayes (Baseline),0.73,0.7293,0.7307,0.7293,0.16,0.25,6236.6,32.95,85.0,0.002,"[[39, 15], [12, 34]]"
+Small: TF-IDF + Logistic Reg,0.72,0.7188,0.7198,0.719,0.22,0.34,4580.1,6.13,140.0,0.003,"[[39, 15], [13, 33]]"
+Chatbot: Gemini Zero-Shot Naive,0.9,0.9,0.9026,0.8998,421.37,476.81,2.4,0.0,0.0,7.5,"[[47, 7], [3, 43]]"
+Chatbot: Gemini Zero-Shot Struct,0.96,0.9591,0.9614,0.9599,431.37,486.81,2.3,0.0,0.0,9.0,"[[51, 3], [1, 45]]"
+Chatbot: Gemini Few-Shot Optimized,0.97,0.9707,0.969,0.9698,506.37,561.81,2.0,0.0,0.0,37.5,"[[53, 1], [2, 44]]"
